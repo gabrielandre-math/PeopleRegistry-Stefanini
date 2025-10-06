@@ -9,7 +9,9 @@ using PeopleRegistry.Communication.Requests;
 using PeopleRegistry.Communication.Responses;
 
 namespace PeopleRegistry.Api.Controllers;
-[Route("api/people")] 
+
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/people")] 
 [ApiController]
 public class PeopleController : ControllerBase
 {

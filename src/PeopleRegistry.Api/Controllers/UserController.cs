@@ -5,7 +5,8 @@ using PeopleRegistry.Application.UseCases.User.Register;
 using PeopleRegistry.Communication.Requests;
 
 namespace PeopleRegistry.Api.Controllers;
-[Route("api/auth")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/auth")]
 [ApiController]
 public class UserController : ControllerBase
 {
