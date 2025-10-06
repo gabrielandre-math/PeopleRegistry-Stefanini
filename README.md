@@ -41,6 +41,16 @@ Camadas inspiradas em **Clean Architecture**:
 > Infrastructure implementa interfaces do Domain e é injetada na composição.
 
 ---
+## UI Criada (React)
+<img width="1233" height="855" alt="image" src="https://github.com/user-attachments/assets/15ce06ab-5546-4f31-a91f-1eea60841266" />
+<img width="1233" height="853" alt="image" src="https://github.com/user-attachments/assets/74253a52-5b2e-4637-9b9c-1a6caa23e79a" />
+
+## V1
+<img width="1181" height="837" alt="image" src="https://github.com/user-attachments/assets/9b8eb80c-1761-4f16-a9b3-a866ee145afc" />
+
+## V2
+<img width="1181" height="837" alt="image" src="https://github.com/user-attachments/assets/4be40210-d75f-453c-8552-dd05e1867894" />
+
 
 ## Tecnologias
 
