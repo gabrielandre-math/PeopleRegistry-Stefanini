@@ -4,6 +4,7 @@ using PeopleRegistry.Domain.Repositories;
 using PeopleRegistry.Exception;
 
 namespace PeopleRegistry.Application.UseCases.Person.Update;
+
 public class UpdatePersonUseCase
 {
     private readonly IMapper _mapper;
@@ -20,16 +21,28 @@ public class UpdatePersonUseCase
         _updateOnlyRepository = updateOnlyRepository;
     }
 
+    // --- v1 ---
     public async Task Execute(Guid id, RequestRegisterPersonJson request)
+        => await ExecuteInternal(id, request);
+
+    // --- v2 ---
+    public async Task Execute(Guid id, RequestRegisterPersonV2Json request)
+        => await ExecuteInternal(id, request);
+
+    
+    private async Task ExecuteInternal<TRequest>(Guid id, TRequest request)
+        where TRequest : class
     {
         var personEntity = await _updateOnlyRepository.GetByIdTracked(id);
-        
+
         if (personEntity is null)
         {
             var message = string.Format(ResourceErrorMessages.PERSON_NOT_FOUND, id);
             throw new NotFoundException(message);
         }
+
         _mapper.Map(request, personEntity);
+
         personEntity.UpdatedAt = DateTime.UtcNow;
 
         _updateOnlyRepository.Update(personEntity);

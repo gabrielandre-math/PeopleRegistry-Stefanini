@@ -69,7 +69,7 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
     options.SupportedUICultures = supportedCultures;
 });
 
-// Banco de dados (migrations estão no projeto Infrastructure)
+// Banco de dados
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<PeopleRegistryDbContext>(options =>
     options.UseSqlite(connectionString, b => b.MigrationsAssembly("PeopleRegistry.Infrastructure"))
@@ -106,13 +106,30 @@ builder.Services.AddAuthentication(o =>
     };
 });
 
+// CORS (para o Vite em dev)
+const string CorsPolicy = "DevCors";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(CorsPolicy, policy =>
+        policy
+            .WithOrigins(
+                "http://localhost:5173",
+                "http://localhost:5174")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+    );
+
+    // Se quiser liberar geral em dev, use esta policy:
+    // options.AddPolicy("OpenAll", p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+});
+
 // DI de infra e aplicação
 builder.Services.AddInfrastructure();
 builder.Services.AddApplication();
 
 var app = builder.Build();
 
-// ---- SEED DE USUÁRIO ADMIN (migra e cria admin casoo necessário) ----
+// ---- SEED DE USUÁRIO ADMIN (migra e cria admin caso necessário) ----
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<PeopleRegistryDbContext>();
@@ -152,6 +169,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseRequestLocalization();
 app.UseHttpsRedirection();
+
+// **CORS deve vir antes de Auth/Authorization**
+app.UseCors(CorsPolicy);
 
 app.UseAuthentication();
 app.UseAuthorization();
