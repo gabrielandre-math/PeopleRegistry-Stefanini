@@ -26,7 +26,6 @@ public class PeopleV2Controller : ControllerBase
         return Created(string.Empty, response);
     }
 
-
     [HttpGet]
     [ProducesResponseType(typeof(ResponsePeopleJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -54,18 +53,7 @@ public class PeopleV2Controller : ControllerBase
         [FromBody] RequestRegisterPersonV2Json request)
     {
         
-        var v1 = new RequestRegisterPersonJson
-        {
-            Name = request.Name,
-            Cpf = request.Cpf,
-            DateOfBirth = request.DateOfBirth,
-            Email = request.Email,
-            Gender = request.Gender,
-            PlaceOfBirth = request.PlaceOfBirth,
-            Nationality = request.Nationality
-        };
-
-        await useCase.Execute(id, v1);
+        await useCase.Execute(id, request);
         return NoContent();
     }
 
