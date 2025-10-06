@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using PeopleRegistry.Communication.Responses;
-using PeopleRegistry.Domain.Repositories.Person;
 
 namespace PeopleRegistry.Application.UseCases.Person.GetAll;
 public class GetAllPeopleUseCase

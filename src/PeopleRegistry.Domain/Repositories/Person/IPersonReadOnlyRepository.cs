@@ -1,8 +1,8 @@
-﻿namespace PeopleRegistry.Domain.Repositories.Person;
+﻿using PeopleRegistry.Domain.Entities;
 
 public interface IPersonReadOnlyRepository
 {
-    Task<IList<Entities.Person>> GetAll();
-    Task<Entities.Person?> GetById(Guid id);
+    Task<IList<Person>> GetAll();
+    Task<Person?> GetById(Guid id);
     Task<bool> ExistsWithCpf(string cpf);
 }

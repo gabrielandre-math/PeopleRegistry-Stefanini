@@ -24,6 +24,10 @@ public static class DependencyInjectionExtension
         services.AddScoped<LoginUseCase>();
 
         services.AddScoped<RefreshTokenUseCase>(); 
-        services.AddScoped<LogoutUseCase>();       
+        services.AddScoped<LogoutUseCase>();
+
+        // Injeção V2 
+        services.AddScoped<RegisterPersonV2UseCase>();
+
     }
 }

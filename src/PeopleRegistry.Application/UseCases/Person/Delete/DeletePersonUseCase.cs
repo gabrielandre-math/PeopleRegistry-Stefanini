@@ -1,5 +1,4 @@
 ﻿using PeopleRegistry.Domain.Repositories;
-using PeopleRegistry.Domain.Repositories.Person;
 using PeopleRegistry.Exception;
 
 namespace PeopleRegistry.Application.UseCases.Person.Delete;

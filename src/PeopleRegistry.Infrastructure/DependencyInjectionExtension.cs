@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using PeopleRegistry.Domain.Repositories;
-using PeopleRegistry.Domain.Repositories.Person;
 using PeopleRegistry.Domain.Repositories.Security.Tokens;
 using PeopleRegistry.Domain.Repositories.Users;
 using PeopleRegistry.Domain.Security.Cryptography;

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using PeopleRegistry.Communication.Responses;
-using PeopleRegistry.Domain.Repositories.Person;
 using PeopleRegistry.Exception;
 
 namespace PeopleRegistry.Application.UseCases.Person.GetById;

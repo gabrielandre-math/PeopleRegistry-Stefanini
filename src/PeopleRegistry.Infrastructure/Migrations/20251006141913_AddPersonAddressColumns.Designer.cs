@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PeopleRegistry.Infrastructure.DataAccess;
 
@@ -10,9 +11,11 @@ using PeopleRegistry.Infrastructure.DataAccess;
 namespace PeopleRegistry.Infrastructure.Migrations
 {
     [DbContext(typeof(PeopleRegistryDbContext))]
-    partial class PeopleRegistryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251006141913_AddPersonAddressColumns")]
+    partial class AddPersonAddressColumns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.9");
@@ -21,9 +24,6 @@ namespace PeopleRegistry.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("City")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Cpf")
@@ -49,22 +49,10 @@ namespace PeopleRegistry.Infrastructure.Migrations
                     b.Property<string>("Nationality")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Number")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("PlaceOfBirth")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("State")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Street")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ZipCode")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

@@ -1,7 +1,8 @@
 ﻿
-namespace PeopleRegistry.Domain.Repositories.Person;
+using PeopleRegistry.Domain.Entities;
+
 public interface IPersonWriteOnlyRepository
 {
-    Task Add(Entities.Person person);
+    Task Add(Person person);
     Task<bool> Delete(Guid id);
 }

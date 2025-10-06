@@ -7,17 +7,17 @@ using PeopleRegistry.Exception;
 
 namespace PeopleRegistry.Application.UseCases.Person.Register;
 
-public class RegisterPersonUseCase
+public class RegisterPersonV2UseCase
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IPersonWriteOnlyRepository _writeOnlyRepository;
     private readonly IPersonReadOnlyRepository _readOnlyRepository;
 
-    public RegisterPersonUseCase(
-        IMapper mapper, 
-        IUnitOfWork unitOfWork, 
-        IPersonWriteOnlyRepository writeOnlyRepository, 
+    public RegisterPersonV2UseCase(
+        IMapper mapper,
+        IUnitOfWork unitOfWork,
+        IPersonWriteOnlyRepository writeOnlyRepository,
         IPersonReadOnlyRepository readOnlyRepository)
     {
         _mapper = mapper;
@@ -26,7 +26,7 @@ public class RegisterPersonUseCase
         _readOnlyRepository = readOnlyRepository;
     }
 
-    public async Task<ResponseRegisteredPersonJson> Execute(RequestRegisterPersonJson request)
+    public async Task<ResponseRegisteredPersonJson> Execute(RequestRegisterPersonV2Json request)
     {
         await Validate(request);
 
@@ -38,15 +38,16 @@ public class RegisterPersonUseCase
         return new ResponseRegisteredPersonJson { Id = personEntity.Id };
     }
 
-    private async Task Validate(RequestRegisterPersonJson request)
+    private async Task Validate(RequestRegisterPersonV2Json request)
     {
-        var validator = new PersonValidator();
+        var validator = new PersonV2Validator();
         var result = await validator.ValidateAsync(request);
 
         var cpfExists = await _readOnlyRepository.ExistsWithCpf(request.Cpf);
         if (cpfExists)
         {
-            result.Errors.Add(new FluentValidation.Results.ValidationFailure("Cpf", ResourceErrorMessages.CPF_ALREADY_EXISTS));
+            result.Errors.Add(new FluentValidation.Results.ValidationFailure(
+                "Cpf", ResourceErrorMessages.CPF_ALREADY_EXISTS));
         }
 
         if (!result.IsValid)

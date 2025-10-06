@@ -1,7 +1,8 @@
-﻿namespace PeopleRegistry.Domain.Repositories.Person;
+﻿
+using PeopleRegistry.Domain.Entities;
 
 public interface IPersonUpdateOnlyRepository
 {
-    Task<Entities.Person?> GetByIdTracked(Guid id);
-    void Update(Entities.Person person);
+    Task<Person?> GetByIdTracked(Guid id);
+    void Update(Person person);
 }

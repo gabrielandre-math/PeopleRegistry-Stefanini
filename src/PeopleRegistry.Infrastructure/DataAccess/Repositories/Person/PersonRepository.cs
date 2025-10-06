@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Person = PeopleRegistry.Domain.Entities.Person;
-using PeopleRegistry.Domain.Repositories.Person;
 
 namespace PeopleRegistry.Infrastructure.DataAccess.Repositories;
 
