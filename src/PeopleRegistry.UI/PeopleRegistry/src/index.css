@@ -1,0 +1,21 @@
+/* Tailwind v4 */
+@import "tailwindcss";
+
+/* Remova o CSS boilerplate do Vite: 
+   - sem bgcolor escuro
+   - sem body flex/center
+   - sem #root com max-width/text-align
+   Deixe o Tailwind controlar o layout. */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+/* (Opcional) utilitariazinha para animações usadas nos toasts */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 200ms ease-out both;
+}
