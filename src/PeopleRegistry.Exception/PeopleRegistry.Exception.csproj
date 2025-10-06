@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Resource.en-US.resx" />
+    <EmbeddedResource Remove="Resources.de.resx" />
+    <EmbeddedResource Remove="Resources.es.resx" />
+    <EmbeddedResource Remove="Resources.fr.resx" />
+    <EmbeddedResource Remove="Resources.pt-BR.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resources\ResourceErrorMessages.resx" />
+    <None Include="Resources\ResourceErrorMessages.de.resx" />
+    <None Include="Resources\ResourceErrorMessages.es.resx" />
+    <None Include="Resources\ResourceErrorMessages.fr.resx" />
+    <None Include="Resources\ResourceErrorMessages.pt-BR.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PeopleRegistry.Communication\PeopleRegistry.Communication.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
