@@ -1,4 +1,6 @@
 # People Registry — .NET + React (Desafio Técnico Stefanini)
+<img src="https://github.com/user-attachments/assets/a9bb8bd2-05d6-478b-8379-685be2f2b734" width="100%" />
+
 
 API e (opcional) front-end para **cadastro de pessoas** com autenticação **JWT**, versionamento de API (**v1/v2**), validações e documentação **Swagger**.
 Projeto focado em **back-end .NET** (6+). Implementado e testado em **.NET 9 / EF Core 9**.
